@@ -21,12 +21,15 @@ const ceurPlein = ' <ion-icon name="heart"></ion-icon>';
 // const bgLoose = 'background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%)';
 
 // play the damn game :
+
 const play = () => {
+
     // nombre aléatoire
     const randomNumber = Math.floor(Math.random() * 101);
     const totalVies = 10;
     let vies=totalVies;
     console.log(randomNumber);
+    
 
 
     // full logique
@@ -63,6 +66,7 @@ const play = () => {
             verifyloose();        
         }
         actualseCoeurs(vies);
+        
      
      
     })  

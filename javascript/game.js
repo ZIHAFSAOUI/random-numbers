@@ -6,66 +6,80 @@ const input = document.getElementById('number');
 const essayerBtn = document.getElementById('essayerBtn');
 const rejouerBtn = document.getElementById('rejouer');
 const body = document.getElementsByTagName('body')[0];
+
+const counterDisplayElem = document.querySelector('.counter-display');
+
 // model de coeurs
 const coeurVide = '<ion-icon name="heart-outline"></ion-icon>';
 const ceurPlein = ' <ion-icon name="heart"></ion-icon>';
 
 
 
+
 // play the damn game :
 
-const play = () => {
 
+// counter
+let count = 0;
+
+const play = () => {
+    
     // nombre aléatoire
     const randomNumber = Math.floor(Math.random() * 101);
     const totalVies = 10;
     let vies=totalVies;
     console.log(randomNumber);
+
+
     
-
-
+    
     // full logique
     formulaire.addEventListener('submit', (e) => {
         e.preventDefault();
+        count ++;
+
         const valeurInput = parseInt(input.value);
         if (valeurInput < 0 || valeurInput > 100) return;
-
-        if (valeurInput === randomNumber) {
+        
+        if (valeurInput === randomNumber && count<=2 ) {
             
-            message.textContent = `bravo !!! le nombre était bien ${randomNumber}`;
+            message.textContent = "Bravo, vous etes un Génie !!!";
+            rejouerBtn.style.display = "block";
+        }else if(valeurInput === randomNumber && count>=3 ) {
+            
+            message.textContent = `Félicitations, vous avez gagné après  ${count}`;
             rejouerBtn.style.display = "block";
         }
-                               
+        
+        
         if (valeurInput !== randomNumber) {
-            if (randomNumber < valeurInput + 11  && randomNumber > valeurInput - 11) {
-               
-                message.textContent = "plus petite !!"
-
-
-            } else if (randomNumber < valeurInput + 6 && randomNumber > valeurInput - 6) {
-               
-                message.textContent = "c'est chaud !!!  "
-
-            } else {
+            if (randomNumber > valeurInput ) {  
+                message.textContent = "plus petite!!"
                 
-                message.textContent = "plus petite!!!";
+            } else if (randomNumber < valeurInput ){
+                
+                message.textContent = "plus grande!!"
+                
+            } 
+            if (vies === 0) {
+                
+                essayerBtn.setAttribute("disabled", "");
+                message.textContent = `C'est raté. la reponse etait ${randomNumber}`;
+                rejouerBtn.style.display = "block";
             }
             vies--;
-            verifyloose();        
+            verifyloose();     
+   
         }
         actualseCoeurs(vies);
+        counterDisplayElem.innerHTML=count;
+
         
-     
-     
+        
+        
     })  
     
     const verifyloose = () => {
-        if (vies === 0) {
-            
-            essayerBtn.setAttribute("disabled", "");
-            message.textContent = `C'est raté. la reponse etait ${randomNumber}`;
-            rejouerBtn.style.display = "block";
-        }
     }
 
     const actualseCoeurs =(vies) => {
@@ -89,8 +103,10 @@ const play = () => {
         document.location.reload(true);
     })
 
-
-
-
+  
+    
+    
+    
+    
 }        
 play();

@@ -2,12 +2,11 @@
 const divVies = document.querySelector('.vies');
 const message = document.getElementById('message');
 const formulaire = document.getElementById('inputBox');
+const counterDisplayElem = document.querySelector('.counter-display');
 const input = document.getElementById('number');
 const essayerBtn = document.getElementById('essayerBtn');
 const rejouerBtn = document.getElementById('rejouer');
 const body = document.getElementsByTagName('body')[0];
-
-const counterDisplayElem = document.querySelector('.counter-display');
 
 // model de coeurs
 const coeurVide = '<ion-icon name="heart-outline"></ion-icon>';
@@ -16,12 +15,10 @@ const ceurPlein = ' <ion-icon name="heart"></ion-icon>';
 
 
 
-// play the damn game :
-
-
 // counter
 let count = 0;
 
+// play the game :
 const play = () => {
     
     // nombre aléatoire
@@ -43,22 +40,22 @@ const play = () => {
         
         if (valeurInput === randomNumber && count<=2 ) {
             
-            message.textContent = "Bravo, vous etes un Génie !!!";
+            message.textContent = "Bravo, vous etes un Génie 👏 !!!";
             rejouerBtn.style.display = "block";
         }else if(valeurInput === randomNumber && count>=3 ) {
             
-            message.textContent = `Félicitations, vous avez gagné après  ${count}`;
+            message.textContent = `Félicitations, vous avez gagné après 👏 ${count}`;
             rejouerBtn.style.display = "block";
         }
         
         
         if (valeurInput !== randomNumber) {
             if (randomNumber > valeurInput ) {  
-                message.textContent = "plus petite!!"
+                message.textContent = "plus petite ⚠ !!"
                 
             } else if (randomNumber < valeurInput ){
                 
-                message.textContent = "plus grande!!"
+                message.textContent = "plus grande ⚠!!"
                 
             } 
             if (vies === 0) {

@@ -6,7 +6,7 @@ const counterDisplayElem = document.querySelector('.counter-display');
 const input = document.getElementById('number');
 const essayerBtn = document.getElementById('essayerBtn');
 const rejouerBtn = document.getElementById('rejouer');
-const body = document.getElementsByTagName('body')[0];
+
 
 // model de coeurs
 const coeurVide = '<ion-icon name="heart-outline"></ion-icon>';

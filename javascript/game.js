@@ -31,8 +31,7 @@ const play = () => {
     
     
     // full logique
-    formulaire.addEventListener('submit', (e) => {
-        e.preventDefault();
+    
         count ++;
 
         const valeurInput = parseInt(input.value);

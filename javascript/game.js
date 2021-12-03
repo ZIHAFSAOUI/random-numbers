@@ -51,15 +51,9 @@ const play = () => {
                 message.textContent = "plus grande ⚠!!"
                 
             } 
-            if (vies === 0) {
-                
-                essayerBtn.setAttribute("disabled", "");
-                message.textContent = `C'est raté. la reponse etait ${randomNumber}`;
-                rejouerBtn.style.display = "block";
-            }
             vies--;
             verifyloose();     
-   
+            
         }
         actualseCoeurs(vies);
         counterDisplayElem.innerHTML=count;
@@ -69,6 +63,12 @@ const play = () => {
     })  
     
     const verifyloose = () => {
+        if (vies === 0) {
+            
+            essayerBtn.setAttribute("disabled", "");
+            message.textContent = `C'est raté. la reponse etait ${randomNumber}`;
+            rejouerBtn.style.display = "block";
+        }
     }
     const actualseCoeurs =(vies) => {
         divVies.innerHTML="";

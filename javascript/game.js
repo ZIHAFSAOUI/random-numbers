@@ -6,18 +6,14 @@ const counterDisplayElem = document.querySelector('.counter-display');
 const input = document.getElementById('number');
 const essayerBtn = document.getElementById('essayerBtn');
 const rejouerBtn = document.getElementById('rejouer');
+const body = document.getElementsByTagName('body')[0];
 
 
 // model de coeurs
 const coeurVide = '<ion-icon name="heart-outline"></ion-icon>';
 const ceurPlein = ' <ion-icon name="heart"></ion-icon>';
-
-
-
-
 // counter
 let count = 0;
-
 // play the game :
 const play = () => {
     
@@ -26,15 +22,12 @@ const play = () => {
     const totalVies = 10;
     let vies=totalVies;
     console.log(randomNumber);
-
-
     
     
     // full logique
     formulaire.addEventListener('submit', (e) => {
         e.preventDefault();
         count ++;
-
         const valeurInput = parseInt(input.value);
         if (valeurInput < 0 || valeurInput > 100) return;
         
@@ -57,26 +50,26 @@ const play = () => {
                 
                 message.textContent = "plus grande ⚠!!"
                 
-            }
-            vies--;
-            verifyloose();     
-   
-        }
-
-        
-    })  
-    
-    const verifyloose = () => {
-        if (vies === 0) {
+            } 
+            if (vies === 0) {
                 
                 essayerBtn.setAttribute("disabled", "");
                 message.textContent = `C'est raté. la reponse etait ${randomNumber}`;
                 rejouerBtn.style.display = "block";
             }
-    }
-     actualseCoeurs(vies);
+            vies--;
+            verifyloose();     
+   
+        }
+        actualseCoeurs(vies);
         counterDisplayElem.innerHTML=count;
-
+        
+        
+        
+    })  
+    
+    const verifyloose = () => {
+    }
     const actualseCoeurs =(vies) => {
         divVies.innerHTML="";
         let tableauDeVies =[];
@@ -89,15 +82,12 @@ const play = () => {
         tableauDeVies.forEach(coeur  => {
             divVies.innerHTML += coeur;
         })
-
     }
     actualseCoeurs(vies);
-
     rejouerBtn.addEventListener('click',() =>{
         message.style.display='none';
         document.location.reload(true);
     })
-
   
     
     
